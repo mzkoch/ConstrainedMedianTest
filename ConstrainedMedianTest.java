@@ -36,7 +36,7 @@ public class ConstrainedMedianTest {
 		long start = System.nanoTime();
 		int minDist = cm.minimizeDistance(k);
 		long end = System.nanoTime();
-		assertEquals(1, minDist);
+		assertEquals(0, minDist);
 		assertTrue(runtimeMsg, (end-start)/1000000 <= 500);
 	}
 
@@ -53,7 +53,7 @@ public class ConstrainedMedianTest {
 		long start = System.nanoTime();
 		int minDist = cm.minimizeDistance(k);
 		long end = System.nanoTime();
-		assertEquals(1, minDist);
+		assertEquals(2, minDist);
 		assertTrue(runtimeMsg, (end-start)/1000000 <= 500);
 	}
 
@@ -70,7 +70,7 @@ public class ConstrainedMedianTest {
 		long start = System.nanoTime();
 		int minDist = cm.minimizeDistance(k);
 		long end = System.nanoTime();
-		assertEquals(1, minDist);
+		assertEquals(19, minDist);
 		assertTrue(runtimeMsg, (end-start)/1000000 <= 500);
 	}
 
