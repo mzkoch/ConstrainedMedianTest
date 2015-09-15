@@ -3,6 +3,8 @@ import org.junit.Test;
 
 
 public class ConstrainedMedianTest {
+	
+	private String runtimeMsg = "Runtime was greater than 500ms.";
 
 	@Test
 	public void test1() {
@@ -14,7 +16,11 @@ public class ConstrainedMedianTest {
 		int k = 1;
 		
 		ConstrainedMedian cm = new ConstrainedMedian(n, xPresent, yPresent, xMissing, yMissing);
-		assertEquals(1, cm.minimizeDistance(k));
+		long start = System.nanoTime();
+		int minDist = cm.minimizeDistance(k);
+		long end = System.nanoTime();
+		assertEquals(1, minDist);
+		assertTrue(runtimeMsg, (end-start)/1000000 <= 500);
 	}
 
 	@Test
@@ -27,7 +33,11 @@ public class ConstrainedMedianTest {
 		int k = 0;
 		
 		ConstrainedMedian cm = new ConstrainedMedian(n, xPresent, yPresent, xMissing, yMissing);
-		assertEquals(0, cm.minimizeDistance(k));
+		long start = System.nanoTime();
+		int minDist = cm.minimizeDistance(k);
+		long end = System.nanoTime();
+		assertEquals(1, minDist);
+		assertTrue(runtimeMsg, (end-start)/1000000 <= 500);
 	}
 
 	@Test
@@ -40,7 +50,11 @@ public class ConstrainedMedianTest {
 		int k = 2;
 		
 		ConstrainedMedian cm = new ConstrainedMedian(n, xPresent, yPresent, xMissing, yMissing);
-		assertEquals(2, cm.minimizeDistance(k));
+		long start = System.nanoTime();
+		int minDist = cm.minimizeDistance(k);
+		long end = System.nanoTime();
+		assertEquals(1, minDist);
+		assertTrue(runtimeMsg, (end-start)/1000000 <= 500);
 	}
 
 	@Test
@@ -53,7 +67,11 @@ public class ConstrainedMedianTest {
 		int k = 10;
 		
 		ConstrainedMedian cm = new ConstrainedMedian(n, xPresent, yPresent, xMissing, yMissing);
-		assertEquals(19, cm.minimizeDistance(k));
+		long start = System.nanoTime();
+		int minDist = cm.minimizeDistance(k);
+		long end = System.nanoTime();
+		assertEquals(1, minDist);
+		assertTrue(runtimeMsg, (end-start)/1000000 <= 500);
 	}
 
 }
