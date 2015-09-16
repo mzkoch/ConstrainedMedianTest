@@ -1,10 +1,16 @@
 import static org.junit.Assert.*;
+
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.Timeout;
 
 
 public class ConstrainedMedianTest {
 	
-	private String runtimeMsg = "Runtime was greater than 500ms.";
+	private static final int MAX_RUNTIME = 500;
+
+    @Rule
+    public Timeout globalTimeout = new Timeout(MAX_RUNTIME);
 
 	@Test
 	public void test1() {
@@ -16,11 +22,7 @@ public class ConstrainedMedianTest {
 		int k = 1;
 		
 		ConstrainedMedian cm = new ConstrainedMedian(n, xPresent, yPresent, xMissing, yMissing);
-		long start = System.nanoTime();
-		int minDist = cm.minimizeDistance(k);
-		long end = System.nanoTime();
-		assertEquals(1, minDist);
-		assertTrue(runtimeMsg, (end-start)/1000000 <= 500);
+		assertEquals(1, cm.minimizeDistance(k));
 	}
 
 	@Test
@@ -33,11 +35,7 @@ public class ConstrainedMedianTest {
 		int k = 0;
 		
 		ConstrainedMedian cm = new ConstrainedMedian(n, xPresent, yPresent, xMissing, yMissing);
-		long start = System.nanoTime();
-		int minDist = cm.minimizeDistance(k);
-		long end = System.nanoTime();
-		assertEquals(0, minDist);
-		assertTrue(runtimeMsg, (end-start)/1000000 <= 500);
+		assertEquals(0, cm.minimizeDistance(k));
 	}
 
 	@Test
@@ -50,11 +48,7 @@ public class ConstrainedMedianTest {
 		int k = 2;
 		
 		ConstrainedMedian cm = new ConstrainedMedian(n, xPresent, yPresent, xMissing, yMissing);
-		long start = System.nanoTime();
-		int minDist = cm.minimizeDistance(k);
-		long end = System.nanoTime();
-		assertEquals(2, minDist);
-		assertTrue(runtimeMsg, (end-start)/1000000 <= 500);
+		assertEquals(2, cm.minimizeDistance(k));
 	}
 
 	@Test
@@ -67,11 +61,7 @@ public class ConstrainedMedianTest {
 		int k = 10;
 		
 		ConstrainedMedian cm = new ConstrainedMedian(n, xPresent, yPresent, xMissing, yMissing);
-		long start = System.nanoTime();
-		int minDist = cm.minimizeDistance(k);
-		long end = System.nanoTime();
-		assertEquals(19, minDist);
-		assertTrue(runtimeMsg, (end-start)/1000000 <= 500);
+		assertEquals(19, cm.minimizeDistance(k));
 	}
 
 }
