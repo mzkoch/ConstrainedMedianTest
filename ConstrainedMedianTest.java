@@ -89,4 +89,30 @@ public class ConstrainedMedianTest {
         ConstrainedMedian cm = new ConstrainedMedian(n, xPresent, yPresent, xMissing, yMissing);
         assertEquals(15, cm.minimizeDistance(k));
     }
+
+	@Test
+    public void test7() {
+		final int n = 7;
+        final int[] xPresent = new int[] { 158, -214, 38, -172, 149, -104 };
+        final int[] yPresent = new int[] { -141, -145, 120, -223, 174, -141 };
+        final int xMissing = 1;
+        final int yMissing = 0;
+        final int k = 38;
+
+        ConstrainedMedian cm = new ConstrainedMedian(n, xPresent, yPresent, xMissing, yMissing);
+        assertEquals(82, cm.minimizeDistance(k));
+    }
+
+	@Test
+    public void test8() {
+    	int n = 7;
+    	int[] xPresent = {2,4,6,12,14,16};
+    	int[] yPresent = {-20,6,8,14,16,18};
+    	int xMissing = 0;
+    	int yMissing = 1;
+    	int k = 6; 
+
+        ConstrainedMedian cm = new ConstrainedMedian(n, xPresent, yPresent, xMissing, yMissing);
+        assertEquals(10, cm.minimizeDistance(k));
+    }
 }
