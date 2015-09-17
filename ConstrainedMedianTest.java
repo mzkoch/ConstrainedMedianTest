@@ -65,15 +65,28 @@ public class ConstrainedMedianTest {
 	}
 	
 	@Test
-        public void test5() {
-	        int n = 21;
-	        int[] xPresent = {-256, 256, 23, 12, -199, -63, 32, 187, 199, -72, 20, 44, 39, 26, 144, 135, 244, -167, -33, 12};
-	        int[] yPresent = {15, 32, 39, 6, 12, 21, 256, -256, 24, -87, -92, -233, -196, -85, 123, 12, 135, 243, -222, 19 };
-	        int xMissing = 15;
-	        int yMissing = 5;
-	        int k = 8;
+    public void test5() {
+        int n = 21;
+        int[] xPresent = {-256, 256, 23, 12, -199, -63, 32, 187, 199, -72, 20, 44, 39, 26, 144, 135, 244, -167, -33, 12};
+        int[] yPresent = {15, 32, 39, 6, 12, 21, 256, -256, 24, -87, -92, -233, -196, -85, 123, 12, 135, 243, -222, 19 };
+        int xMissing = 15;
+        int yMissing = 5;
+        int k = 8;
+
+        ConstrainedMedian cm = new ConstrainedMedian(n, xPresent, yPresent, xMissing, yMissing);
+        assertEquals(455, cm.minimizeDistance(k));
+	}
 	
-	        ConstrainedMedian cm = new ConstrainedMedian(n, xPresent, yPresent, xMissing, yMissing);
-	        assertEquals(455, cm.minimizeDistance(k));
-    	}
+	@Test
+    public void test6() {
+        int n = 7;
+        int[] xPresent = {30,41,5,11,2,19};
+        int[] yPresent = {15,32,39,6,12,21};
+        int xMissing = 0;
+        int yMissing = 5;
+        int k = 6;
+
+        ConstrainedMedian cm = new ConstrainedMedian(n, xPresent, yPresent, xMissing, yMissing);
+        assertEquals(15, cm.minimizeDistance(k));
+    }
 }
