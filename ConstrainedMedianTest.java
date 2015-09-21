@@ -115,4 +115,30 @@ public class ConstrainedMedianTest {
         ConstrainedMedian cm = new ConstrainedMedian(n, xPresent, yPresent, xMissing, yMissing);
         assertEquals(10, cm.minimizeDistance(k));
     }
+	
+	@Test
+    public void test9() {
+        int n = 5;
+        int[] xPresent = {1,2,7,8};
+        int[] yPresent = {0,1,6,7};
+        int xMissing = 0;
+        int yMissing = 0;
+        int k = 3;
+
+        ConstrainedMedian cm = new ConstrainedMedian(n, xPresent, yPresent, xMissing, yMissing);
+        assertEquals(3, cm.minimizeDistance(k));
+    }
+
+    @Test
+    public void test10() {
+        int n = 5;
+        int[] xPresent = {1,2,7,8};
+        int[] yPresent = {0,1,2,3};
+        int xMissing = 0;
+        int yMissing = 0;
+        int k = 3;
+
+        ConstrainedMedian cm = new ConstrainedMedian(n, xPresent, yPresent, xMissing, yMissing);
+        assertEquals(5, cm.minimizeDistance(k));
+    }
 }
